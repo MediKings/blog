@@ -18,7 +18,7 @@ def Register(request):
         password = request.POST['password']
         if User.objects.filter(email=email):
             messages.warning(request, "Cette adresse email existe déjà")
-            return redirect('accounts:register')
+            return redirect('register')
         else:
             user = User.objects.create_user(email=email, password=password)
             user.first_name = first_name
@@ -29,7 +29,7 @@ def Register(request):
                 if auth is not None:
                     login(request, auth)
                     return redirect('accounts:login')
-    return render(request, 'accounts/register.html', {})
+    return render(request, 'accounts/log.html', {})
 
 
 def Login(request):
@@ -49,12 +49,12 @@ def Login(request):
             return redirect('home')
         else:
             messages.error(request, "Mot de passe incorrects! Réessayez")
-            return redirect('accounts:login')
+            return redirect('login')
     else:
-        return render(request, 'accounts/login.html')
+        return render(request, 'accounts/log.html')
 
 
 def Logout(request):
     logout(request)
-    return redirect('accounts:login')
+    return redirect('login')
     
