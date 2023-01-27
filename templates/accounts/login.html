@@ -11,13 +11,18 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="/static/images/logo.png" type="">
-      <title>Blog</title>
+      <title>login</title>
    </head>
    <body>
 
     <h1>Log User</h1>
 
     <form method="post">
+       {% if messages %}
+       {% for m in messages %}
+       <p style="background-color: teal; padding: 10px; margin: 10px; color: #fff;">{{m}}</p>
+       {% endfor %}
+       {% endif %}
        {% csrf_token %}
        <label for="email">
           Email
@@ -27,7 +32,7 @@
           Password
          <input type="password" name="password" id="password">
       </label> <br><br>
-      <button type="submit">Se connecter</button>
+      <button type="submit">Se connecter</button> or <a href="{% url 'register' %}">register</a>
     </form>
    </body>
 </html>

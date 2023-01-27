@@ -36,11 +36,8 @@ def Login(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     if request.method=='POST':
-        if(User.objects.filter(username=email).exists()):
-            user = authenticate(username=email, password=password)
-        elif(User.objects.filter(email=email).exists()):
-            user = User.objects.get(email=email)
-            user = authenticate(username=user.username, password=password)
+        if(User.objects.filter(email=email).exists()):
+            user = authenticate(email=email, password=password)
         else:
             messages.error(request, "Données incorrects! Réessayez")
             return redirect('login')
