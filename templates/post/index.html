@@ -27,5 +27,11 @@
     <a href="{% url 'login' %}">Connexion</a>
     {% endif %}
 
+    <hr>
+    <h2>Users</h2>
+    {% for user in users %}
+    <p>{{user.email}} - {{user.first_name}} - {{user.last_name}}</p>
+    {% endfor %}
+
    </body>
 </html>

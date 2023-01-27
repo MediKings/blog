@@ -1,9 +1,15 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 def Home(request):
+    users = User.objects.all()
     template_name = 'post/index.html'
-    context = {}
+    context = {'users': users}
     return render(request, template_name, context)
 
 

@@ -12,8 +12,8 @@ User = get_user_model()
 
 def Register(request):
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+        first_name = request.POST['first_name'].lower()
+        last_name = request.POST['last_name'].lower()
         email = request.POST['email']
         password = request.POST['password']
         if User.objects.filter(email=email):
