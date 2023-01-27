@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="/static/images/logo.png" type="">
+      <title>Contact</title>
+   </head>
+   <body>
+
+    <h1>Contact User</h1>
+
+    <p style="background-color: teal; padding: 10px; margin: 10px; color: #fff;">
+       <a href="{% url 'home' %}">Accueil</a>
+       <a href="{% url 'contact' %}">Contact</a>
+    </p>
+    <form method="post">
+      {% csrf_token %}
+       {% csrf_token %}
+       <label for="name">
+          Name
+         <input type="text" name="name" id="name">
+      </label> <br><br>
+       <label for="email">
+          Email
+         <input type="email" name="email" id="email">
+      </label> <br><br>
+       <label for="message">
+          Message
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+      </label> <br><br>
+      <button type="submit">Envoyer</button>
+    </form>
+   </body>
+</html>
