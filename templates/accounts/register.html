@@ -15,13 +15,7 @@
    </head>
    <body>
 
-    {% if user.is_authenticated %}
-    <h1>Hello {{request.user.email}}!</h1>
-    <a href="{% url 'logout' %}">Deconnexion</a>
-    {% else %}
-    <h1>Hello inconito!</h1>
-    <a href="{% url 'login' %}">Connexion</a>
-    {% endif %}
+    <h1>Register</h1>
 
    </body>
 </html>

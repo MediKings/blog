@@ -28,22 +28,22 @@ def Register(request):
                 auth = authenticate(email=user.email, password=password)
                 if auth is not None:
                     login(request, auth)
-                    return redirect('accounts:login')
-    return render(request, 'accounts/log.html', {})
+                    return redirect('login')
+    return render(request, 'accounts/register.html', {})
 
 
 def Login(request):
-    username_email = request.POST.get('username_email')
+    email = request.POST.get('email')
     password = request.POST.get('password')
     if request.method=='POST':
-        if(User.objects.filter(username=username_email).exists()):
-            user = authenticate(username=username_email, password=password)
-        elif(User.objects.filter(email=username_email).exists()):
-            user = User.objects.get(email=username_email)
+        if(User.objects.filter(username=email).exists()):
+            user = authenticate(username=email, password=password)
+        elif(User.objects.filter(email=email).exists()):
+            user = User.objects.get(email=email)
             user = authenticate(username=user.username, password=password)
         else:
             messages.error(request, "Données incorrects! Réessayez")
-            return redirect('accounts:login')
+            return redirect('login')
         if user is not None:
             login(request, user)
             return redirect('home')
@@ -51,7 +51,7 @@ def Login(request):
             messages.error(request, "Mot de passe incorrects! Réessayez")
             return redirect('login')
     else:
-        return render(request, 'accounts/log.html')
+        return render(request, 'accounts/login.html')
 
 
 def Logout(request):
